@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { Store } from "../Store";
 import { CheckIcon, StarIcon } from "@heroicons/react/solid";
+import EmptyCart from "../assets/emptyCart.png";
 
 const Cart = ({ recommendProduct }) => {
   const MAX_RATING = 5;
@@ -199,7 +200,12 @@ const Cart = ({ recommendProduct }) => {
           </div>
         </div>
       ) : (
-        <div className="bg-quantity_box p-6">
+        <div className="bg-quantity_box p-6 text-center">
+          <img
+            className="w-72 bg-white rounded-lg p-4 mx-auto"
+            src={EmptyCart}
+            alt=""
+          />
           <h1 className="font-titleFont text-4xl text-red-600 font-bold">
             Your Cart is Empty
           </h1>
