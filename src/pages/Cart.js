@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { Store } from "../Store";
 import { CheckIcon, StarIcon } from "@heroicons/react/solid";
@@ -42,7 +43,17 @@ const Cart = ({ recommendProduct }) => {
   };
 
   const handleProductAdd = (item) => {
-    console.log(item);
+    const existingItem = cart.cartItems.find(
+      (product) => product.id === item.id
+    );
+    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+
+    existingItem
+      ? toast.error("Item already added to Cart")
+      : cartdispatch({
+          type: "CART_PRODUCT_ADD",
+          payload: { ...item, quantity },
+        });
   };
   return (
     <div className="w-full bg-gray-300 h-auto px-8 py-4">
@@ -209,6 +220,17 @@ const Cart = ({ recommendProduct }) => {
           time to pay.
         </p>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
