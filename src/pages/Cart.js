@@ -200,20 +200,28 @@ const Cart = ({ recommendProduct }) => {
           </div>
         </div>
       ) : (
-        <div className="bg-quantity_box p-6 text-center">
-          <img
-            className="w-72 bg-white rounded-lg p-4 mx-auto"
-            src={EmptyCart}
-            alt=""
-          />
-          <h1 className="font-titleFont text-4xl text-red-600 font-bold">
-            Your Cart is Empty
-          </h1>
-          <Link to="/">
-            <button className="mt-6 bg-yellow-400 rounded-full cursor-pointer hover:bg-yellow-500 active:bg-yellow-700 px-8 py-2 font-titleFont font-semibold text-lg">
-              Add Products
-            </button>
-          </Link>
+        <div className="bg-quantity_box p-6 text-center flex justify-center items-center gap-10">
+          <div>
+            <img
+              className="w-80 rounded-lg p-4 mx-auto"
+              src={EmptyCart}
+              alt=""
+            />
+          </div>
+          <div className="bg-white p-4 w-96">
+            <h1 className="font-titleFont text-xl font-bold">
+              Your Cart feels lonely.
+            </h1>
+            <p className="text-sm text-center">
+              Your Shopping cart lives to serve. Give it purpose - fill it with
+              books, electronics, videos, etc. and make it happy.
+            </p>
+            <Link to="/">
+              <button className="mt-6 bg-yellow-400 rounded-md cursor-pointer hover:bg-yellow-500 active:bg-yellow-700 px-8 py-2 font-titleFont font-semibold text-lg">
+                Continue Shopping
+              </button>
+            </Link>
+          </div>
         </div>
       )}
       <div className="max-w-screen-2xl bg-white h-20 mt-6 flex"></div>
