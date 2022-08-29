@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Store } from "../Store";
 import { CheckIcon, StarIcon } from "@heroicons/react/solid";
 import EmptyCart from "../assets/emptyCart.png";
+import FooterTop from "../components/FooterTop";
 
 const Cart = ({ recommendProduct }) => {
   const MAX_RATING = 5;
@@ -56,6 +57,7 @@ const Cart = ({ recommendProduct }) => {
           payload: { ...item, quantity },
         });
   };
+
   return (
     <div className="w-full bg-gray-300 h-auto px-8 py-4">
       {cart.cartItems.length > 0 ? (
@@ -245,6 +247,7 @@ const Cart = ({ recommendProduct }) => {
         draggable
         pauseOnHover
       />
+      <FooterTop />
     </div>
   );
 };

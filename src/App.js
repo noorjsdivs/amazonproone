@@ -7,7 +7,7 @@ import Home from "./Home";
 import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import FooterBottom from "./components/FooterBottom";
-import FooterTop from "./components/FooterTop";
+import Signin from "./Signin";
 
 function App() {
   let [recommendProduct, setRecommendProduct] = useState([]);
@@ -27,8 +27,9 @@ function App() {
           path="/cart"
           element={<Cart recommendProduct={recommendProduct} />}
         ></Route>
+        <Route path="/signin" element={<Signin />}></Route>
       </Routes>
-      <FooterTop />
+
       <Footer />
       <FooterBottom />
     </BrowserRouter>

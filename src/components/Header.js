@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LogoImg from "../assets/logo.png";
 import { Store } from "../Store";
 import {
@@ -9,8 +9,13 @@ import {
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { cartstate } = useContext(Store);
+  const [user, setUser] = useState({});
+  const { cartstate, userstate } = useContext(Store);
   const { cart } = cartstate;
+
+  useEffect(() => {
+    setUser(userstate.userInfo);
+  }, [userstate, user]);
   return (
     <div className="top-0 z-50 sticky">
       {/*=============== Top nav start here ================*/}
@@ -36,7 +41,8 @@ const Header = () => {
         <div className="text-white flex items-center text-xs space-x-6 mx-6 font-titleFont">
           <div className="link">
             <p>
-              Hello, <span className="font-bold">Noor</span>
+              Hello,{" "}
+              <span className="font-bold">{user ? user.name : "stranger"}</span>
             </p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
@@ -62,20 +68,31 @@ const Header = () => {
       </div>
       {/*=============== Top nav end here ================*/}
       {/*=============== Bottom nav start here ================*/}
-      <div className="flex items-center space-x-3 p-3 pl-6 bg-amazon_light text-white">
-        <p className="link flex items-center">
-          <MenuIcon className="h-6 mr-1" />
-          All
-        </p>
-        <p className="link">Sell</p>
-        <p className="link">Best Sellers</p>
-        <p className="link">Today's Deals</p>
-        <p className="link">Customer Service</p>
-        <p className="link hidden lg:inline-flex">Your Prime</p>
-        <p className="link hidden lg:inline-flex">New Releases</p>
-        <p className="link hidden lg:inline-flex">Mobile Phones</p>
-        <p className="link hidden lg:inline-flex">Fashion</p>
-        <p className="link hidden lg:inline-flex">Electronics</p>
+      <div className="  bg-amazon_light text-white flex justify-between">
+        <div className="flex items-center space-x-3 p-3 pl-6">
+          <p className="link flex items-center">
+            <MenuIcon className="h-6 mr-1" />
+            All
+          </p>
+          <p className="link">Sell</p>
+          <p className="link">Best Sellers</p>
+          <p className="link">Today's Deals</p>
+          <p className="link">Customer Service</p>
+          <p className="link hidden lg:inline-flex">Your Prime</p>
+          <p className="link hidden lg:inline-flex">New Releases</p>
+          <p className="link hidden lg:inline-flex">Mobile Phones</p>
+          <p className="link hidden lg:inline-flex">Fashion</p>
+          <p className="link hidden lg:inline-flex">Electronics</p>
+        </div>
+        <div className="hidden md:inline-flex items-center space-x-3 p-3 pl-6 ">
+          {user ? (
+            <div>
+              <p>User Email: {user.email}</p>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       {/*=============== Bottom nav end here ================*/}
     </div>
