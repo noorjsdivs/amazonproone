@@ -40,11 +40,21 @@ const Header = () => {
         {/* Right */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 font-titleFont">
           <div className="link">
-            <p>
-              Hello,{" "}
-              <span className="font-bold">{user ? user.name : "stranger"}</span>
-            </p>
-            <p className="font-extrabold md:text-sm">Account & Lists</p>
+            <Link to="signin">
+              <p>
+                Hello,{" "}
+                <span className="font-bold">
+                  {user ? user.name : "stranger"}
+                </span>
+              </p>
+            </Link>
+            {user ? (
+              <p className="font-extrabold md:text-sm">Account & Lists</p>
+            ) : (
+              <Link to="signin">
+                <p className="font-extrabold md:text-sm">Signin</p>
+              </Link>
+            )}
           </div>
           <div className="link">
             <p>Returns</p>

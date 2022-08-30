@@ -23,6 +23,7 @@ const Signin = () => {
 
   const onSuccessLogout = () => {
     toast.success("Logout Successfully!");
+    userdispatch({ type: "USER_LOGIN", payload: "" });
     navigate("/", { state: "Logout Successfully!" });
   };
 
